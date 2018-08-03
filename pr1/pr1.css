@@ -1,0 +1,8 @@
+.boi {
+    text-align: center;
+    width: 200px;
+    border: 1px solid grey;
+    box-shadow: 1px 3px 4px #ccc;
+    display: inline-block;
+    margin: 10px;
+  }
