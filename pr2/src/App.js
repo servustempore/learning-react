@@ -12,14 +12,25 @@ class App extends Component {
     ]
   };
 
-  personify = person => {
-    return <Person name={person.name} age={person.age} />;
-  }
-
   clickMe = () => {
     let counter = this.state.counter;
     counter++;
     this.setState({counter: counter});
+  }
+
+  clickPerson = (name) => {
+    this.setState({
+      persons:
+      [
+        {name: name, age: 22},
+        {name: "Peter", age: 19},
+        {name: "Peer", age: 24}
+      ]
+    })
+  }
+
+  personify = person => {
+    return <Person name={person.name} age={person.age} click={this.clickPerson.bind(this, person.name)}/>;
   }
 
   render() {
