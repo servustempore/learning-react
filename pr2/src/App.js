@@ -3,13 +3,23 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      {name: "Hans", age: 22},
+      {name: "Peter", age: 19},
+      {name: "Peer", age: 24}
+    ]
+  };
+
+  personify = person => {
+    return <Person name={person.name} age={person.age} />;
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Hallo there, this is me, Fritz!</h1>
-        <Person name="Hans" age="22"/>
-        <Person name="Peter" age="23">Hans Peter aber haha</Person>
-        <Person name="Peer" age="21"/>
+        {this.state.persons.map(this.personify)}
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hallo there, this is me, Hans!'));
