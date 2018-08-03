@@ -45,11 +45,19 @@ class App extends Component {
   }
 
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     return (
       <div className="App">
         <h1>Hallo there, look at sese persons pls!</h1>
         <p>Counter: {this.state.counter}</p>
-        <button onClick={this.clickMe}>Klick mi!</button>
+        <button style={style} onClick={this.clickMe}>Klick mi!</button>
         {this.state.persons.map(this.personify)}
       </div>
     );
