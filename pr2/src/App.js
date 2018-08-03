@@ -17,13 +17,16 @@ class App extends Component {
   }
 
   clickMe = () => {
-    console.log("Clicked!");
+    let counter = this.state.counter;
+    counter++;
+    this.setState({counter: counter});
   }
 
   render() {
     return (
       <div className="App">
         <h1>Hallo there, look at sese persons pls!</h1>
+        <p>Counter: {this.state.counter}</p>
         <button onClick={this.clickMe}>Klick mi!</button>
         {this.state.persons.map(this.personify)}
       </div>
