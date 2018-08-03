@@ -29,8 +29,19 @@ class App extends Component {
     })
   }
 
+  changeName = (event) => {
+    this.setState({
+      persons:
+      [
+        {name: event.target.value, age: 22},
+        {name: "Peter", age: 19},
+        {name: "Peer", age: 24}
+      ]
+    })
+  }
+
   personify = person => {
-    return <Person name={person.name} age={person.age} click={this.clickPerson.bind(this, person.name)}/>;
+    return <Person name={person.name} age={person.age} click={this.clickPerson.bind(this, person.name)} changeName={this.changeName}/>;
   }
 
   render() {
