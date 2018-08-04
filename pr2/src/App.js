@@ -20,8 +20,9 @@ class App extends Component {
   }
 
   deletePerson = (index) => {
-    let persons = this.state.persons;
-    persons.splice(index, 1);
+    // const persons = this.state.persons.splice() // unmodern way of copying an array
+    const persons = [...this.state.persons];
+    // persons.splice(index, 1); // bad practice since persons is a reference (pointer) to this.state.persons
 
     this.setState({
       persons: persons
