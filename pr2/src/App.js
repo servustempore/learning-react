@@ -59,6 +59,14 @@ class App extends Component {
       cursor: 'pointer'
     };
 
+    let persons = null;
+
+    if(this.state.showPerson){
+      persons = (
+        this.state.persons.map(this.personify)
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hallo there, look at sese persons pls!</h1>
@@ -66,10 +74,7 @@ class App extends Component {
         <button style={style} onClick={this.clickMe}>Klick mi!</button>
         <p>Show Persons: </p>
         <button className="button-cstm" onClick={this.togglePersons}>Toggle Persons</button>
-        { this.state.showPerson ?
-          this.state.persons.map(this.personify) :
-          null
-        }
+        {persons}
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hallo there, this is me, Hans!'));
