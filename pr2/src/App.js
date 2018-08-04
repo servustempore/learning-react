@@ -19,30 +19,28 @@ class App extends Component {
     this.setState({counter: counter});
   }
 
-  clickPerson = (name) => {
+  deletePerson = (index) => {
+    let persons = this.state.persons;
+    persons.splice(index, 1);
+
     this.setState({
-      persons:
-      [
-        {name: name, age: 22},
-        {name: "Peter", age: 19},
-        {name: "Peer", age: 24}
-      ]
-    })
+      persons: persons
+    });
   }
 
   changeName = (event) => {
     this.setState({
       persons:
       [
-        {name: event.target.value, age: 22},
-        {name: "Peter", age: 19},
-        {name: "Peer", age: 24}
+        {name: event.target.value, age: 22, id: 1},
+        {name: "Peter", age: 19, id: 2},
+        {name: "Peer", age: 24, id: 3}
       ]
     })
   }
 
-  personify = person => {
-    return <Person name={person.name} age={person.age} click={this.clickPerson.bind(this, person.name)} changeName={this.changeName}/>;
+  personify = (person, index) => {
+    return <Person key={person.id} name={person.name} age={person.age} click={() => this.deletePerson(index)/*this.deletePerson.bind(this, person.name)*/} changeName={this.changeName}/>;
   }
 
   togglePersons = () => {
@@ -74,7 +72,9 @@ class App extends Component {
         <button style={style} onClick={this.clickMe}>Klick mi!</button>
         <p>Show Persons: </p>
         <button className="button-cstm" onClick={this.togglePersons}>Toggle Persons</button>
-        {persons}
+        <div>
+          {persons}
+        </div>
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hallo there, this is me, Hans!'));
