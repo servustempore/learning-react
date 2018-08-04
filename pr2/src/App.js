@@ -6,9 +6,9 @@ class App extends Component {
   state = {
     counter: 0,
     persons: [
-      {name: "Hans", age: 22},
-      {name: "Peter", age: 19},
-      {name: "Peer", age: 24}
+      {id: 1, name: "Hans", age: 22},
+      {id: 2, name: "Peter", age: 19},
+      {id: 3, name: "Peer", age: 24}
     ],
     showPerson: true
   };
@@ -21,8 +21,8 @@ class App extends Component {
 
   deletePerson = (index) => {
     // const persons = this.state.persons.splice() // unmodern way of copying an array
-    const persons = [...this.state.persons];
-    // persons.splice(index, 1); // bad practice since persons is a reference (pointer) to this.state.persons
+    const persons = [...this.state.persons]; // you have to copy the array, otherwise we get a pinter to the state variable
+    persons.splice(index, 1); // which would automatically change the state by just applying this command
 
     this.setState({
       persons: persons
@@ -33,9 +33,9 @@ class App extends Component {
     this.setState({
       persons:
       [
-        {name: event.target.value, age: 22, id: 1},
-        {name: "Peter", age: 19, id: 2},
-        {name: "Peer", age: 24, id: 3}
+        {name: event.target.value, age: 22},
+        {name: "Peter", age: 19},
+        {name: "Peer", age: 24}
       ]
     })
   }
