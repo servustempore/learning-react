@@ -29,19 +29,35 @@ class App extends Component {
     });
   }
 
-  changeName = (event) => {
+  changeName = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+    /* 
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person; */
+
+    const persons = [...this.state.persons];
+    persons[personIndex].name = event.target.value;
+
     this.setState({
-      persons:
-      [
-        {name: event.target.value, age: 22},
-        {name: "Peter", age: 19},
-        {name: "Peer", age: 24}
-      ]
+      persons: persons
     })
   }
 
   personify = (person, index) => {
-    return <Person key={person.id} name={person.name} age={person.age} click={() => this.deletePerson(index)/*this.deletePerson.bind(this, person.name)*/} changeName={this.changeName}/>;
+    return <Person 
+      key={person.id} 
+      name={person.name} 
+      age={person.age} 
+      click={() => this.deletePerson(index)/*this.deletePerson.bind(this, person.name)*/} 
+      changeName={(event) => this.changeName(event, person.id)}
+      
+    />;
   }
 
   togglePersons = () => {
