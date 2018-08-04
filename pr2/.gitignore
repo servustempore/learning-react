@@ -3,6 +3,16 @@
 # dependencies
 /node_modules
 
+# not ignore webpack config
+!/config/webpack.config.dev.js
+!/config/webpack.config.prod.js
+
+# config
+/config
+
+# scripts
+/scripts
+
 # testing
 /coverage
 
