@@ -8,3 +8,11 @@
     margin-top: 16px;
     /*margin-bottom: 16px;*/
 }
+
+.button-cstm{
+    background-color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+}
