@@ -16,9 +16,11 @@ class App extends Component {
   };
 
   clickMe = () => {
-    let counter = this.state.counter;
-    counter++;
-    this.setState({counter: counter});
+    this.setState((prevState, props) => {
+      return {
+        counter: prevState.counter + 1
+      };
+    });
   }
 
   deletePerson = (index) => {
