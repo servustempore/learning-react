@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -50,14 +51,14 @@ class App extends Component {
   }
 
   personify = (person, index) => {
-    return <Person 
-      key={person.id} 
-      name={person.name} 
-      age={person.age} 
-      click={() => this.deletePerson(index)/*this.deletePerson.bind(this, person.name)*/} 
-      changeName={(event) => this.changeName(event, person.id)}
-      
-    />;
+    return <ErrorBoundary key={person.id}>
+      <Person  
+        name={person.name} 
+        age={person.age} 
+        click={() => this.deletePerson(index)/*this.deletePerson.bind(this, person.name)*/} 
+        changeName={(event) => this.changeName(event, person.id)}
+      />
+    </ErrorBoundary>;
   }
 
   togglePersons = () => {
